@@ -4,17 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+
     <title>COUNTDOWN</title>
   </head>
   <body>
     <div class="container">
       <h2><span>Countdown to the New Year </span>2021</h2>
       <div class="countdown">
-        <div class="days">days</div>
-        <div class="hours">hours</div>
-        <div class="minutes">min</div>
-        <div class="seconds">sec</div>
+        <div class="day">NA</div>
+        <div class="hour">NA</div>
+        <div class="minute">NA</div>
+        <div class="second">NA</div>
       </div>
     </div>
+    <script type="text/javascript">
+      var countDate = new Date("Jan 1, 2021 00:00:00").getTime();
+
+      function newYear() {
+        var current = new Date().getTime();
+        gap = countDate - current;
+
+        var second = 1000;
+        var minutes = second * 60;
+        var hour = minutes * 60;
+        var day = minutes * 24;
+
+        var d = Math.floor(gap / day);
+        var h = Math.floor((gap % day) / hour);
+        var m = Math.floor((gap % hour) / minutes);
+        var s = Math.floor((gap % minutes) / second);
+
+        document.getElementById("day").innerText = d;
+        document.getElementById("hour").innerText = h;
+        document.getElementById("minute").innerText = m;
+        document.getElementById("second").innerText = s;
+      }
+
+      setInterval(() => {
+        newYear();
+      }, 1000);
+    </script>
   </body>
 </html>
